@@ -1,0 +1,7 @@
+C:\Users\w7\Desktop\dev\hyperdrive\Falcon-Pay\FalconPay\FalconPay.Web\obj\Release\net7.0\PubTmp\Out\FalconPay.Web.exe
+C:\Users\w7\Desktop\dev\hyperdrive\Falcon-Pay\FalconPay\FalconPay.Web\obj\Release\net7.0\PubTmp\Out\appsettings.Development.json
+C:\Users\w7\Desktop\dev\hyperdrive\Falcon-Pay\FalconPay\FalconPay.Web\obj\Release\net7.0\PubTmp\Out\appsettings.json
+C:\Users\w7\Desktop\dev\hyperdrive\Falcon-Pay\FalconPay\FalconPay.Web\obj\Release\net7.0\PubTmp\Out\FalconPay.Web.dll
+C:\Users\w7\Desktop\dev\hyperdrive\Falcon-Pay\FalconPay\FalconPay.Web\obj\Release\net7.0\PubTmp\Out\FalconPay.Web.deps.json
+C:\Users\w7\Desktop\dev\hyperdrive\Falcon-Pay\FalconPay\FalconPay.Web\obj\Release\net7.0\PubTmp\Out\FalconPay.Web.runtimeconfig.json
+C:\Users\w7\Desktop\dev\hyperdrive\Falcon-Pay\FalconPay\FalconPay.Web\obj\Release\net7.0\PubTmp\Out\FalconPay.Web.pdb

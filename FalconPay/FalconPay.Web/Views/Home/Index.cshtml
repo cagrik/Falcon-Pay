@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<button id="btn">Click me</button>
+<script>
+    (function(){
+    document.getElementById('btn').onclick=function(){
+            var jsonreq = '{"jsonrpc": "2.0","id": 1,"method": "getSignaturesForAddress","params": ["bEwPRiynGXnFYtWSBDo7bxxkK2QAWETgcofJxiAZe7T",{"limit": 1}]};';
+            fetch('https://localhost:7142/Home/Add', {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json; charset=utf-8',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+                body: JSON.stringify(jsonreq),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+
+
+                })
+    
+    };
+    })();
+</script>

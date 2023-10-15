@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FalconPay.Web", "FalconPay.Web", "{3D5EC9A7-4E3F-4577-9D2E-C30AA796F4E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FalconPay.Web", "FalconPay.Web\FalconPay.Web.csproj", "{2DE15188-74E3-4ABA-8FCA-63AED497B2CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DE15188-74E3-4ABA-8FCA-63AED497B2CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE15188-74E3-4ABA-8FCA-63AED497B2CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE15188-74E3-4ABA-8FCA-63AED497B2CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE15188-74E3-4ABA-8FCA-63AED497B2CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2DE15188-74E3-4ABA-8FCA-63AED497B2CA} = {3D5EC9A7-4E3F-4577-9D2E-C30AA796F4E4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E35DEEE1-EACC-4E80-9703-C1F50DBBD0FA}
+	EndGlobalSection
+EndGlobal

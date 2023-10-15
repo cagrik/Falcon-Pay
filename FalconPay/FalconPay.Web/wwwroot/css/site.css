@@ -1,0 +1,57 @@
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+ 
+body {
+  margin-bottom: 60px;
+}
+
+#main{height: auto;width: 100%;padding: 1%;display: flex;
+  flex-flow: row wrap;}
+        #numpad{height: auto; width: 260px;background-color:#fefceb;display: flex;
+  flex-flow: row wrap;border:solid black 3px;padding: 1%; }
+        .button {
+  background-color: #d8d8d8;
+
+  color: #eb5f5e;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  font-size: 26px;
+  margin: 4px 2px;
+  font-weight: bold;
+font-family: 'Courier New', Courier, monospace;
+}
+.button:hover{
+    cursor: pointer;
+}
+#paymentDetails{
+    height: 400px;width: auto;
+    margin-left: 1%;
+}
+select {
+  width: 43%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  margin-left: 1%;
+}
+#paymentResult{
+  margin-left: 10%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+#qrcode{margin: 0;}

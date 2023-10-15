@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\w7\\Desktop\\dev\\hyperdrive\\Falcon-Pay\\FalconPay\\FalconPay.Web\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\FalconPay.Web.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FalconPay.Web.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\w7\\Desktop\\dev\\hyperdrive\\Falcon-Pay\\FalconPay\\FalconPay.Web\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\w7\\Desktop\\dev\\hyperdrive\\Falcon-Pay\\FalconPay\\FalconPay.Web\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\w7\\Desktop\\dev\\hyperdrive\\Falcon-Pay\\FalconPay\\FalconPay.Web\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\w7\\Desktop\\dev\\hyperdrive\\Falcon-Pay\\FalconPay\\FalconPay.Web\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\w7\\Desktop\\dev\\hyperdrive\\Falcon-Pay\\FalconPay\\FalconPay.Web\\wwwroot\\numpad.html",
+      "PackagePath": "staticwebassets\\numpad.html"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.FalconPay.Web.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.build.FalconPay.Web.props",
+      "PackagePath": "build\\FalconPay.Web.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.FalconPay.Web.props",
+      "PackagePath": "buildMultiTargeting\\FalconPay.Web.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildTransitive.FalconPay.Web.props",
+      "PackagePath": "buildTransitive\\FalconPay.Web.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

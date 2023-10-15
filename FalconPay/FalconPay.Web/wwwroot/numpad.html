@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <style>
+      body{background-color: #f1f1f1;}
+        #main{height: auto;width: 100%;display: flex;
+  flex-flow: row wrap;}
+        #numpad{height: auto; width: 260px;background-color:#fefceb;display: flex;
+  flex-flow: row wrap;border:solid black 3px;padding: 1%; }
+        .button {
+  background-color: #d8d8d8;
+
+  color: #eb5f5e;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  font-size: 26px;
+  margin: 4px 2px;
+  font-weight: bold;
+font-family: 'Courier New', Courier, monospace;
+}
+.button:hover{
+    cursor: pointer;
+}
+#paymentDetails{
+    height: 400px;width: auto;
+    margin-left: 1%;
+}
+select {
+  width: 43%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  margin-left: 1%;
+}
+#paymentResult{
+  margin-left: 10%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+#qrcode{margin: 0;}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <button id="cw">Connect Wallet</button>
+    <div id="main">
+        <div id="numpad">
+            <input type="text" id="tutar" style="height: 38px;font-size: 30px; width: 50%; text-align: right;"/>
+            <label for="token"></label>
+            <select id="tokens" name="tokens">
+              <option value="sol" selected>Solana</option>
+              <option value="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">USDC</option>
+              <option value="Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB">USDT</option>
+              <option value="DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263">BONK</option>
+              <option value="SHDWyBxihqiCj6YekG2GUr7wqKLeLAMK1gHZck9pL6y">SHADOW</option>
+            </select><button class="button">1</button>
+<button class="button">2</button>
+<button class="button">3</button>
+<button class="button">4</button>
+<button class="button">5</button>
+<button class="button">6</button>
+<button class="button">7</button>
+<button class="button">8</button>
+<button class="button">9</button>
+<button class="button">C</button>
+<button class="button">0</button>
+<button class="button">.</button>
+<button>Generate</button>
+        </div>
+        <div id="paymentDetails">
+          <div id="paymentResult">
+            Requested: <b>1 SOL</b><br>
+            Status: <b>Panding</b>
+            </div>
+          <p><img id="qrcode" src="https://chart.apis.google.com/chart?cht=qr&chl=@Model.link&chs=400" /></p>
+          
+      </div>
+    </div>
+
+
+
+
+    <script>
+     const btnCw=    document.getElementById('cw');
+const getProvider = () => {
+  if ('phantom' in window) {
+    const provider = window.phantom?.solana;
+
+    if (provider?.isPhantom) {
+      return provider;
+    }
+  }
+
+  window.open('https://phantom.app/', '_blank');
+};
+/*create trasfer req*/
+const createTransferRequest = () => {
+  var tokens_=document.getElementById('tokens');
+  
+const is_spltoken=tokens_.selectedOptions[0].value=="sol"?false:true;
+const spl_address=tokens_.selectedOptions[0].value;
+const refKey=new solanaWeb3.Keypair().publicKey.toBase58();
+const requestedAmount=document.getElementById('tutar').value;
+var tranferUrl="solana:8X5zHADZ4oTZXC59JmjVn1NRqcA6DGc649TrwL11ZdNr?amount="+requestedAmount+"&reference="+refKey;
+if(is_spltoken){
+  tranferUrl=tranferUrl+"&splToken="+spl_address;
+}
+var qrCodeUrl="https://chart.apis.google.com/chart?cht=qr&chl="+tranferUrl+"&chs=400"
+document.getElementById("qrcode").setAttribute('src',qrCodeUrl);
+};
+/*tranfer req*/
+
+/*fetch transaction*/
+ const  fetchTransaction = async () => {
+ // const url = solanaWeb3.clusterApiUrl('mainnet-beta', false);
+  const url = solanaWeb3.clusterApiUrl('devnet', false);
+  const connection = new solanaWeb3.Connection(url);
+  console.log(connection);
+  /*bEwPRiynGXnFkBQu23EWiRg4W5vE4VidHXfLg8UUpr3*/
+ /* var findRefs=await connection.getSignaturesForAddress('bEwPRiynGXnFYtWSBDo7bxxkK2QAWETgcofJxiAZe7T');
+  console.log(findRefs);*/
+
+  const rpcRequest = {"jsonrpc": "2.0","id": 1,"method": "getSignaturesForAddress","params": ["bEwPRiynGXnFYtWSBDo7bxxkK2QAWETgcofJxiAZe7T",{"limit": 1}]};
+     fetch('http://api.devnet.solana.com/', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(rpcRequest),
+})
+  .then((response) => response.json())
+  .then((data) => {
+   
+    
+checkTransfer(data);
+
+
+  })
+  .catch((error) => {
+    console.error(connection._rpcEndpoint);
+  });
+
+};
+/*fetch transaction*/
+
+/*is check trasnfer completed*/
+async function checkTransfer(_data){
+if(_data.result.length>0){
+  const transaction=_data.result[0];
+  if(transaction.confirmationStatus
+==="finalized"){
+console.log(transaction.signature);
+
+/*rpc req*/
+const rpcRequest = {"method":"getTransaction","params":[transaction.signature,{"encoding":"json","commitment":"finalized"}],"jsonrpc":"2.0","id":0};
+     fetch('http://api.devnet.solana.com/', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(rpcRequest),
+})
+  .then((response) => response.json())
+  .then((data) => {
+   
+    console.log(data);
+    console.log('********');
+    /*is finalized*/
+    if (data.result != null&& data.result.meta!=null)
+                {
+                    var fark = data.result.meta.postBalances[1] - data.result.meta.preBalances[1];
+                    var fk = parseFloat(fark);
+                    var solSend = fk / 1000000000;
+                  //  r = solSend == Amount;
+                    console.log(solSend +' - '+fk);
+                    if (!data.result.transaction.message.accountKeys.includes('8X5zHADZ4oTZXC59JmjVn1NRqcA6DGc649TrwL11ZdNr'))
+                    {
+                        r = false;
+
+                    }
+                }
+    /*is finalized*/
+
+
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+  /*rpc req*/
+
+
+  }
+}
+};
+
+/*is check trasnfer completed*/
+
+
+/* wallet connection*/
+ async function connectWallet(){btnCw.disabled = "disabled";
+     const isPhantomInstalled = window.phantom?.solana?.isPhantom
+            console.log(isPhantomInstalled);
+            const provider = getProvider(); 
+try {
+    const resp = await provider.connect();
+    console.log(resp.publicKey.toString());
+   btnCw.innerText=resp.publicKey.toString();
+   btnCw.onclick=null;
+   btnCw.disabled = "disabled";
+} catch (err) {
+    console.log(err);
+}};
+/* wallet connection*/
+
+/*numpad*/
+const klavyeBagla = () => {
+    var tuslar=document.getElementsByClassName('button');
+    var toplam=document.getElementById('tutar');
+    for(var i=0;i<tuslar.length;i++){
+       tuslar[i].onclick=function(){
+        var deger=this.innerText;
+        console.log(deger);
+        switch(deger){
+            case 'C':
+            toplam.value="";
+            break;
+            case '0':
+                var dgr=parseFloat(toplam.value);
+                if(dgr>0){
+                    toplam.value+=deger;
+                }else if(toplam.value.length>1){
+                    toplam.value+=deger;
+                }
+                else{toplam.value='0.'}
+                break;
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                toplam.value+=deger;
+               break;
+               case ',':
+               case '.':
+              
+                if(toplam.value.includes(',')||toplam.value.includes('.')){ }
+                else{ if(toplam.value.length<1){toplam.value='0.';}else{toplam.value+=deger;}
+               }
+                break;
+        }
+       };
+    }
+};
+/*numpad*/
+
+//const getProvider = () => {};
+
+/* page on_load*/
+        (async function(){
+            klavyeBagla();
+           btnCw.onclick = connectWallet;
+           fetchTransaction();
+
+        })();
+       /*page on_load*/
+        </script>
+</body>
+</html>
